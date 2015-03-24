@@ -8,22 +8,23 @@ public class Telefonika
 	private String nombreCliente;
 	private int numCuenta;
 	private float saldoTotal;
-	private ArrayList<String> arrNombres = new ArrayList<String>();
-	private ArrayList<Integer> arrCuentas = new ArrayList<Integer>();
+	private static ArrayList<String> arrNombres = new ArrayList<String>();
+	private static ArrayList<Integer> arrCuentas = new ArrayList<Integer>();
 	
-	public Telefonika(String nom, int cuenta, float sal)
+	public Telefonika(String nom, int cuenta, float sal) throws IllegalArgumentException
 	{
-		while(!checkCuentaUsuario(nom,cuenta))
+		if(!checkCuentaUsuario(nom,cuenta))
 		{
 			nombreCliente=nom;
-			while(!checkCuenta(cuenta))
+			if(!checkCuenta(cuenta))
 			{
-				System.out.println("Número de cuenta equivocado. Escribalo otra vez");
+				throw new IllegalArgumentException("Número de cuenta equivocado. Escribalo otra vez");
 			}
 			numCuenta=cuenta;
-		}
+		}else {
+			throw new IllegalArgumentException("El valor es negativo");
+		}		
 		saldoTotal=sal;
-		System.out.println(regresaDatos());
 	}
 	
 	public String regresaDatos()
@@ -33,12 +34,7 @@ public class Telefonika
 	
 	public boolean checkCuenta(int cuenta)
 	{
-		boolean flag=false;
-		if(cuenta>0)
-		{
-			flag=true;
-		}
-		return flag;
+		return cuenta > 0;
 	}
 	
 	public boolean checkCuentaUsuario(String nom, int cuenta)
@@ -65,7 +61,7 @@ public class Telefonika
 		
 	}
 	
-	public String getNombre()
+	public String getNombreCliente()
 	{
 		return nombreCliente;
 	}
@@ -73,5 +69,24 @@ public class Telefonika
 	public int getNumCuenta()
 	{
 		return numCuenta;
+	}
+	
+	public void setNombreCliente(String nombreCliente)
+	{
+		this.nombreCliente = nombreCliente;
+	}
+	
+	public void setNumCuenta(int cuenta) throws IllegalArgumentException
+	{
+		if(!checkCuentaUsuario(this.nombreCliente,cuenta))
+		{
+			if(!checkCuenta(cuenta))
+			{
+				throw new IllegalArgumentException("Número de cuenta equivocado. Escribalo otra vez");
+			}
+			numCuenta=cuenta;
+		}else {
+			throw new IllegalArgumentException("El valor es negativo");
+		}	
 	}
 }
