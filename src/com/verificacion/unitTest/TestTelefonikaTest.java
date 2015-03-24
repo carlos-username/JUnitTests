@@ -19,5 +19,45 @@ public class TestTelefonikaTest {
 		assertEquals("El cliente "+nombreCliente+", con número de cuenta # "
 		+numCuenta+", tiene un saldo de"+saldoTotal, telef.regresaDatos());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testNotValid() {
+		String nombreCliente = "Marin Salinas";
+		int numCuenta = 0;
+		float saldoTotal = 400;
+		
+		Telefonika telef = new Telefonika(nombreCliente, numCuenta, saldoTotal);
+		
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testNumCuentas() {
+		String nombreCliente = "Marin Salinas";
+		int numCuenta = 0;
+		float saldoTotal = 400;
+		
+		Telefonika telef = new Telefonika(nombreCliente, numCuenta, saldoTotal);
+		Telefonika telef2 = new Telefonika(nombreCliente, numCuenta, saldoTotal);
+		
+	}
+	
+	@Test
+	public void testSaldoTotal() {
+		String nombreCliente = "Marin Salinas";
+		int numCuenta = 1;
+		float saldoTotal = 999999998;
+		
+		Telefonika telef = new Telefonika(nombreCliente, numCuenta, saldoTotal);
+		telef.setSaldoTotal(saldoTotal);
+		assertEquals(saldoTotal, telef.getSaldoTotal());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

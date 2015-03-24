@@ -102,4 +102,8 @@ public class Telefonika
 		saldoTotal=saldoTotal + saldo;
 		
 	}
+	
+	public float getSaldoTotal(){
+		return this.saldoTotal;
+	}
 }
