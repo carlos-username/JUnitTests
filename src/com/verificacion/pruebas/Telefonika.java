@@ -24,7 +24,7 @@ public class Telefonika
 			numCuenta=cuenta;
 			arrCuentas.add(this.numCuenta);
 		}else {
-			throw new IllegalArgumentException("El valor es negativo");
+			throw new IllegalArgumentException("El valor es negativo o ya existe");
 		}		
 		saldoTotal=sal;
 		

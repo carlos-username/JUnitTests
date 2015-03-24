@@ -7,12 +7,12 @@ public class Telefono extends Telefonika
 	private final double tarifaCelular = 3.45;
 	private  int numeroGratuito;
 	
-	public Telefono(String nom, int cu, int tel, float sal, String numeroGratuito)
+	public Telefono(String nom, int cu, int tel, float sal, int numeroGratuito)
 	{
 		super(nom,cu,sal);
 		numeroTelefono=tel;
 		saldoTelefono=sal;
-		this.numeroGratuito = this.numeroGratuito;
+		this.numeroGratuito = numeroGratuito;
 	}
 	
 	public float getsaldoTelefono()
@@ -36,8 +36,38 @@ public class Telefono extends Telefonika
 		saldoTelefono -= tarifaCelular;
 	}
 	
-	private boolean isNumeroGratuito(int numero){
+	public boolean isNumeroGratuito(int numero){
 		return numero == numeroGratuito;
 	}
+
+	public int getNumeroTelefono() {
+		return numeroTelefono;
+	}
+
+	public void setNumeroTelefono(int numeroTelefono) {
+		this.numeroTelefono = numeroTelefono;
+	}
+
+	public float getSaldoTelefono() {
+		return saldoTelefono;
+	}
+
+	public void setSaldoTelefono(float saldoTelefono) {
+		this.saldoTelefono = saldoTelefono;
+	}
+
+	public int getNumeroGratuito() {
+		return numeroGratuito;
+	}
+
+	public void setNumeroGratuito(int numeroGratuito) {
+		this.numeroGratuito = numeroGratuito;
+	}
+
+	public double getTarifaCelular() {
+		return tarifaCelular;
+	}
+	
+	
 
 }

@@ -56,7 +56,7 @@ public class Internet extends Telefonika
 	{
 		int discount;
 		Random rand = new Random();
-		discount=rand.nextInt((int)saldoInternet)+10;
+		discount=rand.nextInt((int)this.saldoInternet)+10;
 		return discount;
 	}
 }
