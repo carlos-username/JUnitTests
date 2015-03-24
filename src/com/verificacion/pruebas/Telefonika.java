@@ -16,15 +16,18 @@ public class Telefonika
 		if(!checkCuentaUsuario(nom,cuenta))
 		{
 			nombreCliente=nom;
+			arrNombres.add(nombreCliente);
 			if(!checkCuenta(cuenta))
 			{
 				throw new IllegalArgumentException("Número de cuenta equivocado. Escribalo otra vez");
 			}
 			numCuenta=cuenta;
+			arrCuentas.add(this.numCuenta);
 		}else {
 			throw new IllegalArgumentException("El valor es negativo");
 		}		
 		saldoTotal=sal;
+		
 	}
 	
 	public String regresaDatos()
@@ -71,9 +74,14 @@ public class Telefonika
 		return numCuenta;
 	}
 	
-	public void setNombreCliente(String nombreCliente)
+	public void setNombreCliente(String nombreCliente) throws IllegalArgumentException
 	{
-		this.nombreCliente = nombreCliente;
+		if(!arrNombres.contains(nombreCliente)){
+			this.nombreCliente = nombreCliente;
+		}
+		throw new IllegalArgumentException("El usuario ya existe");
+		
+		
 	}
 	
 	public void setNumCuenta(int cuenta) throws IllegalArgumentException
@@ -88,5 +96,10 @@ public class Telefonika
 		}else {
 			throw new IllegalArgumentException("El valor es negativo");
 		}	
+	}
+
+	public void setSaldoTotal(float saldo) {
+		saldoTotal=saldoTotal + saldo;
+		
 	}
 }
